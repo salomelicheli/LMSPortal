@@ -1,0 +1,67 @@
+﻿@page
+@model LMS.Pages.Account.LoginPageModel
+@{
+    ViewData["Title"] = "Login";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="~/css/style.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-sm">
+                   @* <div class="card-header text-center bg-primary text-white">
+                        <h2>Login</h2>
+                    </div>*@
+                    <div class="card-body">
+                        <form method="post">
+                            @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+                            {
+                                <div class="alert alert-danger" role="alert">
+                                    @Model.ErrorMessage
+                                </div>
+                            }
+
+                            <!-- User ID Input -->
+                            <div class="form-group mb-3">
+                                <label asp-for="LoginVM.userID" class="form-label">მომხმარებელი</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="bi bi-person-fill"></i>
+                                    </span>
+                                    <input asp-for="LoginVM.userID" class="form-control" />
+                                </div>
+                                <span asp-validation-for="LoginVM.userID" class="text-danger"></span>
+                            </div>
+
+                            <!-- Password Input -->
+                            <div class="form-group mb-3">
+                                <label asp-for="LoginVM.password" class="form-label">პაროლი</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="bi bi-lock-fill"></i>
+                                    </span>
+                                    <input asp-for="LoginVM.password" class="form-control" type="password" />
+                                </div>
+                                <span asp-validation-for="LoginVM.password" class="text-danger"></span>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary btn-block">შესვლა</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

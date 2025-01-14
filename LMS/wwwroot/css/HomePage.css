@@ -1,0 +1,37 @@
+﻿.text-green {
+    color: green;
+}
+
+.icon-small {
+    width: 16px;
+    height: 16px;
+    fill: green;
+}
+
+.me-2 {
+    margin-right: 0.5rem;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.icon-container {
+    margin-right: 10px;
+}
+
+.iconSizeHeader svg {
+    height: 24px;
+    width: 24px;
+    color: #feaf1b; 
+}
+
+.text-container .align-middle {
+    font-size: 16px;
+    font-weight: bold;
+    color: #feaf1b;
+}

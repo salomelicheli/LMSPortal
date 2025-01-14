@@ -1,0 +1,79 @@
+﻿@model LMS.ViewModels.EnrollmentPageVM
+
+<hr />
+<h3>საგნების სია</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th></th>
+            <th>საგნის დასახელება</th>
+            <th>განმარტება</th>
+            <th>ქმედებები</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Courses?.Count == 0)
+        {
+            <tr>
+                <td colspan="4" class="text-center">No results found.</td>
+            </tr>
+        }
+        else
+        {
+            int index = 1;
+            foreach (var result in Model.Courses)
+            {
+                <tr>
+                    <td>@index</td>
+                    <td>@result.CourseName</td>
+                    <td>@result.Description</td>
+                    <td>@result.Credit</td>
+                    <td>
+                        <form method="post" asp-page-handler="SelectCourse" asp-route-courseId="@result.Id" id="selectCourseForm-@result.Id">
+                            <input type="hidden" name="courseId" value="@result.Id" />
+                            <button type="button" class="btn btn-secondary" onclick="submitSelectCourseForm(@result.Id)">არჩევა</button>
+                        </form>
+                    </td>
+                </tr>
+                index++;
+            }
+        }
+    </tbody>
+</table>
+
+<hr />
+<h3>თქვენი რეგისტრაციები</h3>
+@if (Model.Enrollments?.Count > 0)
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>საგნის დასახელება</th>
+                <th>განმარტება</th>
+                <th>კრ. რაოდენობა</th>
+                <th>ქმედებები</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var enrollment in Model.Enrollments)
+            {
+
+                    <tr>
+                        <td>@enrollment.CourseName</td>
+                        <td>@enrollment.Description</td>
+                        <td>@enrollment.Credit</td>
+                    <td>
+                        <form method="post" asp-page-handler="Delete" asp-route-courseId="@enrollment.Id" id="deleteCourseForm-@enrollment.Id">
+                            <input type="hidden" name="courseId" value="@enrollment.Id">
+                            <button type="button" class="btn btn-secondary" onclick="submitDeleteCourseForm(@enrollment.Id)">X</button>
+                        </form>
+                    </td>
+                    </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>არასრული რეგისტრაცია</p>
+}
