@@ -1,0 +1,107 @@
+﻿@page
+@model LMS.Pages.AdminPageModel
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>სასწავლო კურსის მართვა</title>
+    <link href="~/css/site.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container my-5 py-5">
+
+        <h2 class="text-center mb-4">სასწავლო კურსის დამატება</h2>
+
+        <form method="post" class="p-4 border rounded shadow-sm bg-light">
+            <div class="mb-3">
+                <label for="CourseName" class="form-label">სასწავლო კურსის დასახელება</label>
+                <input type="text" class="form-control" id="CourseName" asp-for="adminVM.Name" placeholder="სასწავლო კურსის დასახელება" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="CourseDescription" class="form-label">კურსის აღწერა</label>
+                <textarea class="form-control" id="CourseDescription" asp-for="adminVM.Description" rows="3" placeholder="აღწერა" required></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="faculty" class="form-label">ფაკულტეტის არჩევა</label>
+                @{
+                    var facultySelectList = new SelectList(Model.adminVM.Faculties, "Id", "Name");
+                }
+                <select asp-for="adminVM.SelectedFacultyId" class="form-select" asp-items="facultySelectList">
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">სასწავლო კურსის დამატება</button>
+        </form>
+
+        <hr class="my-5">
+
+        <h3 class="text-center mb-4">არსებული სასწავლო კურსები</h3>
+        <form method="get" class="p-4 border rounded shadow-sm bg-light">
+            <div class="mb-3">
+                <label for="faculty" class="form-label">ფაკულტეტით ძიება</label>
+                @{
+                    var facultyList = new SelectList(Model.adminVM.Faculties, "Id", "Name");
+                }
+                <select name="facultyId" class="form-select">
+                    @foreach (var item in facultyList)
+                    {
+                        <option value="@item.Value" selected="@(item.Value == Model.adminVM.FilterId.ToString() ? "selected" : "")">
+                            @item.Text
+                        </option>
+                    }
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">გაფილტვრა</button>
+        </form>
+
+
+            @if (Model.adminVM.Courses.Count == 0)
+            {
+                <p class="text-center text-muted">სასწავლო კურსები დამატებული არ არის.</p>
+            }
+            else
+            {
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>კურსის დასახელება</th>
+                            <th>აღწერა</th>
+                            <th>ფაკულტეტი</th>
+                            <th>ქმედება</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var course in Model.adminVM.Courses)
+                        {
+                            <tr>
+                                <td>@course.Id</td>
+                                <td>@course.CourseName</td>
+                                <td>@course.Description</td>
+                                <td>@course.Faculty.Name</td>
+                                <td>
+                                    <form method="post" asp-page-handler="Delete" class="d-inline">
+                                        <input type="hidden" name="courseId" value="@course.Id">
+                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+        </div>
+
+    </div>
+</body>
+</html>
+
+
+

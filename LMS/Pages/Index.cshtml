@@ -1,0 +1,216 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "საინფორმაციო დაფა";
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    <!DOCTYPE html>
+
+    <link href="~/css/HomePage.css" rel="stylesheet">
+
+    <div class="header-container shadow-sm rounded paddinPageHeader">
+        <div class="icon-container">
+            <i class="iconSizeHeader IconRadius">
+                <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="info-square" role="img" viewBox="0 0 448 512">
+                    <path fill="currentColor" d="M400 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V80c0-26.51-21.49-48-48-48zm16 400c0 8.822-7.178 16-16 16H48c-8.822 0-16-7.178-16-16V80c0-8.822 7.178-16 16-16h352c8.822 0 16 7.178 16 16v352zm-228-80h12V232h-12c-6.627 0-12-5.373-12-12v-8c0-6.627 5.373-12 12-12h48c6.627 0 12 5.373 12 12v140h12c6.627 0 12 5.373 12 12v8c0 6.627-5.373 12-12 12h-72c-6.627 0-12-5.373-12-12v-8c0-6.627 5.373-12 12-12zm36-240c-17.673 0-32 14.327-32 32s14.327 32 32 32 32-14.327 32-32-14.327-32-32-32z"></path>
+                </svg>
+            </i>
+        </div>
+        <div class="text-container">
+            <span class="align-middle">საინფორმაციო დაფა</span>
+        </div>
+    </div>
+
+    <div class="container my-5">
+
+        <div class="row">
+            <!-- Feature 1 -->
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <img src="Images/thsu.jpg" class="card-img-top rounded" alt="Best Universities">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-primary">მსოფლიოს საუკეთესო უნივერსიტეტებს შორის</h5>
+                        <p class="card-text text-muted">თსუ მუდმივად იკავებს ადგილს მსოფლიოს საუკეთესო უნივერსიტეტების სიაში.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Feature 2 -->
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <img src="/Images/maglivi.png" class="card-img-top rounded" alt="International Partnerships">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-success">საერთაშორისო პარტნიორები</h5>
+                        <p class="card-text text-muted">გაცვლითი პროგრამები მსოფლიოს წამყვან უნივერსიტეტებთან.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Feature 3 -->
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <img src="Images/logo.png" class="card-img-top rounded" alt="Research and Projects">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-warning">კვლევა და პროექტები</h5>
+                        <p class="card-text text-muted">ინოვაციური კვლევები და მნიშვნელოვანი საერთაშორისო პროექტები.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Feature 4 -->
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <img src="Images/tsu2.jpg" class="card-img-top rounded" alt="Student Life">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-danger">სტუდენტური ცხოვრება</h5>
+                        <p class="card-text text-muted">მრავალფეროვანი და აქტიური გარემო თსუ-ს სტუდენტებისთვის.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container my-5 py-5">
+        <div class="card">
+            <div class="card-header processHeaderFontCurrent subHeader d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center">
+                    <i class="iconSizeSubHeader IconRadiusGreen me-2">
+                        <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="calendar-alt" role="img" viewBox="0 0 448 512" class="icon-small">
+                            <path fill="currentColor" d="M400 64h-48V12c0-6.6-5.4-12-12-12h-8c-6.6 0-12 5.4-12 12v52H128V12c0-6.6-5.4-12-12-12h-8c-6.6 0-12 5.4-12 12v52H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48zM48 96h352c8.8 0 16 7.2 16 16v48H32v-48c0-8.8 7.2-16 16-16zm352 384H48c-8.8 0-16-7.2-16-16V192h384v272c0 8.8-7.2 16-16 16zM148 320h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm96 0h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm96 0h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm-96 96h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm-96 0h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm192 0h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12z"></path>
+                        </svg>
+                    </i>
+                    <span class="align-middle text-green">მიმდინარე სემესტრის სასწავლო პროცესის ვადები</span>
+                </div>
+            </div>
+            <div class="card-body processBody table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="procInfoTableHeader">
+                            <td>სასწავლო პროცესი</td>
+                            <td>დაწყება</td>
+                            <td>დასრულება</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="plCaption">ადმინისტრაციული რეგისტრაცია</td>
+                            <td class="plTime">2024-08-11 00:00</td>
+                            <td class="plTime">2024-10-06 00:00</td>
+                        </tr>
+                        <tr>
+                            <td class="plCaption">აკადემიური რეგისტრაცია</td>
+                            <td class="plTime">2024-09-20 09:00</td>
+                            <td class="plTime">2024-10-01 00:00</td>
+                        </tr>
+                        <tr>
+                            <td class="plCaption">დამატებითი კრედიტის რეგისტრაცია</td>
+                            <td class="plTime">2024-08-11 00:00</td>
+                            <td class="plTime">2024-10-15 19:00</td>
+                        </tr>
+                        <tr>
+                            <td class="plCaption">პედაგოგის მიერ სააუდიტორიო შეფასებების შეტანის პერიოდი</td>
+                            <td class="plTime">2024-09-23 00:00</td>
+                            <td class="plTime">2025-01-01 00:00</td>
+                        </tr>
+                        <tr>
+                            <td class="plCaption">პედაგოგის მიერ შუალედური გამოცდის შეფასებების შეტანის პერიოდი</td>
+                            <td class="plTime">2024-11-08 00:00</td>
+                            <td class="plTime">2024-12-31 00:00</td>
+                        </tr>
+                        <tr>
+                            <td class="plCaption">შუალედური გამოცდის პერიოდი</td>
+                            <td class="plTime">2024-11-11 00:00</td>
+                            <td class="plTime">2024-11-16 00:00</td>
+                        </tr>
+                        <tr class="procInfoDivider">
+                            <td colspan="3">აკადემიური რეგისტრაცია სხვა ფაკულტეტის საგნებზე</td>
+                        </tr>
+                        <tr>
+                            <td class="plCaption">ეკონომიკისა და ბიზნესის</td>
+                            <td class="plTime">2024-09-17 15:00</td>
+                            <td class="plTime">2024-09-30 00:00</td>
+                        </tr>
+                        <tr>
+                            <td class="plCaption">ზუსტ და საბუნებისმეტყველო მეცნიერებათა</td>
+                            <td class="plTime">2024-09-17 15:00</td>
+                            <td class="plTime">2024-09-30 05:00</td>
+                        </tr>
+                        <tr>
+                            <td class="plCaption">იურიდიული</td>
+                            <td class="plTime">2024-09-20 15:00</td>
+                            <td class="plTime">2024-09-30 00:00</td>
+                        </tr>
+                        <tr>
+                            <td class="plCaption">მედიცინის</td>
+                            <td class="plTime">2024-09-17 15:00</td>
+                            <td class="plTime">2024-09-30 00:00</td>
+                        </tr>
+                        <tr>
+                            <td class="plCaption">სოციალურ და პოლიტიკურ მეცნიერებათა</td>
+                            <td class="plTime">2024-09-17 15:00</td>
+                            <td class="plTime">2024-09-30 00:00</td>
+                        </tr>
+                        <tr>
+                            <td class="plCaption">ფსიქოლოგიისა და განათლების მეცნიერებათა</td>
+                            <td class="plTime">2024-09-17 15:00</td>
+                            <td class="plTime">2024-09-30 00:00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="paddinCardL">
+        <div class="card">
+            <div class="card-header processHeaderFontCurrent subHeader d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center">
+                    <i class="iconSizeSubHeader IconRadiusGreen me-2">
+                        <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="calendar-alt" role="img" viewBox="0 0 448 512" class="icon-small">
+                            <path fill="currentColor" d="M400 64h-48V12c0-6.6-5.4-12-12-12h-8c-6.6 0-12 5.4-12 12v52H128V12c0-6.6-5.4-12-12-12h-8c-6.6 0-12 5.4-12 12v52H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48zM48 96h352c8.8 0 16 7.2 16 16v48H32v-48c0-8.8 7.2-16 16-16zm352 384H48c-8.8 0-16-7.2-16-16V192h384v272c0 8.8-7.2 16-16 16zM148 320h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm96 0h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm96 0h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm-96 96h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm-96 0h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm192 0h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12z" />
+                        </svg>
+                    </i>
+                </div>
+                <div class="subHeaderHeight">
+                    <span class="align-middle">მობილობის ვადები</span>
+                </div>
+            </div>
+            <div class="card-body processBody table-responsive">
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr class="procInfoTableHeader">
+                            <td>სასწავლო პროცესი</td>
+                            <td>დაწყება</td>
+                            <td>დასრულება</td>
+                        </tr>
+                        <tr>
+                            <td>მობილობის პირველი ეტაპი</td>
+                            <td>01.09.2024</td>
+                            <td>15.09.2024</td>
+                        </tr>
+                        <tr>
+                            <td>მობილობის მეორე ეტაპი</td>
+                            <td>20.09.2024</td>
+                            <td>30.09.2024</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container mt-4">
+        <div class="card border-warning">
+            <div class="card-header bg-light">
+                <h5 class="text-danger font-weight-bold">საყურადღებო შეტყობინება</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    პირველ სემესტრელების აკადემიური რეგისტრაცია (საგნების არჩევა)
+                    <strong>18.09.2024 12:00 საათი.</strong>
+                    <br />
+                    <strong>16.09.2024</strong> მხოლოდ ზედა სემესტრელები ირჩევენ საგნებს.
+                </p>
+            </div>
+        </div>
+    </div>
+}

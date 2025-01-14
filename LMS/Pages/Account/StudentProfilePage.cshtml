@@ -1,0 +1,118 @@
+﻿@page
+@model LMS.Pages.Account.StudentProfilePageModel
+@{
+    ViewData["Title"] = "Student Profile";
+}
+
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile</title>
+    <link href="~/css/site.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f9f9f9;
+            font-family: Arial, sans-serif;
+        }
+
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #6c757d;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+        }
+
+        .form-label {
+            font-weight: bold;
+            color: #6c757d;
+        }
+
+        .table th {
+            width: 40%;
+            background-color: #e9ecef;
+            color: #495057;
+        }
+
+        .table td {
+            color: #212529;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+                border-color: #0056b3;
+            }
+    </style>
+</head>
+<body>
+    <div class="container my-5 py-5">
+        <h2 class="text-center mb-4 text-primary">ანკეტა</h2>
+
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <form method="post" enctype="multipart/form-data" class="p-4 border rounded shadow bg-white text-center">
+                    <div class="mb-4">
+                        <img src="/path/to/default-profile.jpg" id="profilePhotoPreview" alt="Profile Photo" class="profile-pic">
+                        <div class="mt-2">
+                            <label for="profilePhoto" class="form-label">Upload Profile Photo</label>
+                            <input type="file" class="form-control" id="profilePhoto" name="profilePhoto" accept="image/*" onchange="previewProfilePhoto(event)">
+                        </div>
+                    </div>
+
+                    <table class="table table-bordered text-start">
+                        <tbody>
+                            <tr>
+                                <th scope="row">პირადი ნომერი:</th>
+                                <td>@Model._profilePageVM.PersonalId</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">სახელი (ლათინურად):</th>
+                                <td>@Model._profilePageVM.FirstName</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">გვარი (ლათინურად):</th>
+                                <td>@Model._profilePageVM.LastName</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Email:</th>
+                                <td>@Model._profilePageVM.Email</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">ფაკულტეტი:</th>
+                                <td>@Model._profilePageVM.FacultyName</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                 @*   <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Update Profile</button>
+                    </div>*@
+
+                   
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        function previewProfilePhoto(event) {
+            const reader = new FileReader();
+            reader.onload = function () {
+                const preview = document.getElementById('profilePhotoPreview');
+                preview.src = reader.result;
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
+</body>
+</html>

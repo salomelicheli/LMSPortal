@@ -1,0 +1,93 @@
+﻿@page
+@model LMS.Pages.EnrollmentPageModel
+@{
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Example</title>
+    <link href="~/css/site.css" rel="stylesheet">
+</head>
+<body>
+    <h2>სემესტრული რეგისტრაცია</h2>
+    <div class="container mt-5">
+       
+        <form method="post" asp-page-handler="Search">
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label for="dropdown1" class="form-label">ფაკულტეტი</label>
+                    @{
+                        var facultySelectList = new SelectList(Model._enrollmentPage.Faculties, "Id", "Name");
+                    }
+                    <select id="dropdown1" class="form-select" asp-for=FacultyId asp-items="facultySelectList"></select>
+                </div>            
+            </div>
+            <div class="mb-3">
+                <label for="textInput" class="form-label"></label>
+                <input id="textInput" class="form-control" asp-for="SearchWord" />
+            </div>
+            <button type="submit" class="btn btn-primary">ძებნა</button>
+        </form>
+
+        <div id="courseListContainer">
+            @await Html.PartialAsync("_EnrollmentPagePartial", Model._enrollmentPage)
+        </div>
+    </div>
+                
+</body>
+</html>
+
+<script>
+    function submitSelectCourseForm(courseId) {
+        event.preventDefault();
+        var form = document.getElementById("selectCourseForm-" + courseId);
+        var formData = new FormData(form);
+
+        // Check if formData has the courseId
+        for (var pair of formData.entries()) {
+            console.log(pair[0] + ': ' + pair[1]);
+        }
+        $.ajax({
+            url: '/EnrollmentPage?handler=SelectCourse',  
+            type: 'POST',  // HTTP method
+            data: formData,  // The form data
+            processData: false,  // Don't process the data (it's already serialized)
+            contentType: false,  
+            success: function (response) {
+                $('#courseListContainer').html(response);
+            },
+            error: function () {
+                alert('Already enrolled');
+            }
+        });
+    }
+
+    function submitDeleteCourseForm(courseId) {
+        event.preventDefault();
+        var form = document.getElementById("deleteCourseForm-" + courseId);
+        var formData = new FormData(form);
+
+        // Check if formData has the courseId
+        for (var pair of formData.entries()) {
+            console.log(pair[0] + ': ' + pair[1]);
+        }
+
+        $.ajax({
+            url: '/EnrollmentPage?handler=Delete',  // Update the handler for delete
+            type: 'POST',  // HTTP method
+            data: formData,  // The form data
+            processData: false,  // Don't process the data (it's already serialized)
+            contentType: false,
+            success: function (response) {
+                $('#courseListContainer').html(response);
+            },
+            error: function () {
+                alert('Unable to delete enrollment. Please try again.');
+            }
+        });
+    }
+
+  
+</script>
+            
