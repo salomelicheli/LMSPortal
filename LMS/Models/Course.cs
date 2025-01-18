@@ -9,7 +9,6 @@ namespace LMS.Models
         [Required]
         public int Id { get; set; }
         public string CourseName { get; set; }  
-        [MaxLength(500)]
         public string Description { get; set; }
         public ICollection<Enrollment>? Students { get; set; }
         [ForeignKey("Faculty")]

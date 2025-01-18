@@ -36,6 +36,11 @@
                 <select asp-for="adminVM.SelectedFacultyId" class="form-select" asp-items="facultySelectList">
                 </select>
             </div>
+            <div class="mb-3">
+                <label for="Credits" class="form-label">კურსის კრედიტები</label>
+                <input type="number" class="form-control" id="Credits" asp-for="adminVM.Credit" min="4" max="10" placeholder="კრედიტები (4-დან 10-მდე)" required>
+            </div>
+
 
             <button type="submit" class="btn btn-primary w-100">სასწავლო კურსის დამატება</button>
         </form>
@@ -74,6 +79,7 @@
                             <th>#</th>
                             <th>კურსის დასახელება</th>
                             <th>აღწერა</th>
+                            <th>კრ. რაოდენობა</th>
                             <th>ფაკულტეტი</th>
                             <th>ქმედება</th>
                         </tr>
@@ -85,12 +91,17 @@
                                 <td>@course.Id</td>
                                 <td>@course.CourseName</td>
                                 <td>@course.Description</td>
+                                <td>@course.Credit</td>
                                 <td>@course.Faculty.Name</td>
                                 <td>
+                                <div class="btn-group" role="group">
+                                    <a asp-page="/Edit" asp-route-id="@course.Id" class="btn btn-primary btn-sm">Edit</a>
                                     <form method="post" asp-page-handler="Delete" class="d-inline">
                                         <input type="hidden" name="courseId" value="@course.Id">
                                         <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                                     </form>
+                                </div>
+
                                 </td>
                             </tr>
                         }
