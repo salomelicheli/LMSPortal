@@ -6,25 +6,23 @@
     <title>@ViewData["Title"] - University Portal</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/Layout.css" asp-append-version="true" />
 </head>
 <body>
+    <style>
+        #navBar {
+            color: #feaf1b;
+        }
+    </style>
     @if (User.Identity.IsAuthenticated)
     {
         <nav id="navBar" class="navbar navbar-expand-xl navbar-light bg-custom-yellow fixed-top border-bottom" style="z-index: 1000; background-color: #feaf1b;">
             <div class="container">
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li _ngcontent-ng-cli-universal-c3401076821="" class="nav-item">
-                            <a _ngcontent-ng-cli-universal-c3401076821="" class="nav-link" asp-area="" asp-page="/Index">
-                                <i _ngcontent-ng-cli-universal-c3401076821="" class="iconMainMenu">
-                                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="home" role="img" viewBox="0 0 576 512" class="home-icon">
-                                        <path fill="currentColor" d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z" class=""></path>
-                                    </svg>
-                                </i>
-                            </a>
-                            <div _ngcontent-ng-cli-universal-c3401076821="" class="underline"></div>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">მთავარი გვერდი</a>
                         </li>
+                        <!-- Conditionally render items based on user authentication -->
                         @if (User.IsInRole("Admin"))
                         {
                             <li class="nav-item">
@@ -33,21 +31,8 @@
                         }
                         else
                         {
-                          @*
-                    <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-page="/EnrollmentPage">საგნების არჩევა</a>
-                    </li>
-                    *@ 
-                            <li _ngcontent-ng-cli-universal-c3401076821="" class="nav-item">
-                                <a _ngcontent-ng-cli-universal-c3401076821="" class="nav-link" asp-area="" asp-page="/EnrollmentPage">
-                                    <i _ngcontent-ng-cli-universal-c3401076821="" class="fontIconMenu iconMainMenu">
-                                        <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="shopping-cart" role="img" viewBox="0 0 576 512" class="shopping-cart-icon">
-                                            <path fill="currentColor" d="M551.991 64H144.28l-8.726-44.608C133.35 8.128 123.478 0 112 0H12C5.373 0 0 5.373 0 12v24c0 6.627 5.373 12 12 12h80.24l69.594 355.701C150.796 415.201 144 430.802 144 448c0 35.346 28.654 64 64 64s64-28.654 64-64a63.681 63.681 0 0 0-8.583-32h145.167a63.681 63.681 0 0 0-8.583 32c0 35.346 28.654 64 64 64 35.346 0 64-28.654 64-64 0-18.136-7.556-34.496-19.676-46.142l1.035-4.757c3.254-14.96-8.142-29.101-23.452-29.101H203.76l-9.39-48h312.405c11.29 0 21.054-7.869 23.452-18.902l45.216-208C578.695 78.139 567.299 64 551.991 64zM208 472c-13.234 0-24-10.766-24-24s10.766-24 24-24 24 10.766 24 24-10.766 24-24 24zm256 0c-13.234 0-24-10.766-24-24s10.766-24 24-24 24 10.766 24 24-10.766 24-24 24zm23.438-200H184.98l-31.31-160h368.548l-34.78 160z" class=""></path>
-                                        </svg>
-                                    </i>
-                                    საგნების არჩევა
-                                </a>
-                                <div _ngcontent-ng-cli-universal-c3401076821="" class="underline"></div>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/EnrollmentPage">საგნების არჩევა</a>
                             </li>
                         }
                     </ul>
@@ -58,17 +43,14 @@
             </div>
         </nav>
     }
-
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
-
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
