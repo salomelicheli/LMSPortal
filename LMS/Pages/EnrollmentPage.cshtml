@@ -50,9 +50,9 @@
         }
         $.ajax({
             url: '/EnrollmentPage?handler=SelectCourse',  
-            type: 'POST',  // HTTP method
-            data: formData,  // The form data
-            processData: false,  // Don't process the data (it's already serialized)
+            type: 'POST',  
+            data: formData,  
+            processData: false, 
             contentType: false,  
             success: function (response) {
                 $('#courseListContainer').html(response);

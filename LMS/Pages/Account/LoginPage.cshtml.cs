@@ -31,8 +31,6 @@ namespace LMS.Pages.Account
 
             if(user != null)
             {
-                //HttpContext.Session.SetInt32("userId", user.Id);
-
                 var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, user.FirstName),

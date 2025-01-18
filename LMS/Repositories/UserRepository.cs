@@ -2,8 +2,6 @@
 using LMS.Models;
 using LMS.Services;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-using System.Reflection.Metadata.Ecma335;
 
 namespace LMS.Repositories
 {
@@ -33,14 +31,15 @@ namespace LMS.Repositories
 
         public async Task DeleteEnrollment(int userId, int courseId)
         {
-            User user = await _context.Users.FirstOrDefaultAsync(u => u.Id == userId);
-
             Enrollment enrollment = await _context
                 .Enrollments.FirstOrDefaultAsync(e => e.StudentID == userId && e.CourseID == courseId);
 
-            _context.Enrollments.Remove(enrollment);
+            if (enrollment != null)
+            {
+                _context.Enrollments.Remove(enrollment);
 
-            await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync();
+            }         
         }
 
         public async Task<List<User>> GetStudentsByRole()
@@ -57,16 +56,8 @@ namespace LMS.Repositories
 
         public async Task<User> GetUserByCredentials(string personalID, string password)
         {
-            try
-            {
-                return await _context.Users
-                                .FirstOrDefaultAsync(u => 
-                                u.PersonalID == personalID && u.Password == password);
-            }
-            catch(Exception ex)
-            {
-                return null;
-            }
+           return await _context.Users.FirstOrDefaultAsync(u => 
+                             u.PersonalID == personalID && u.Password == password);
         }
 
         public async Task UpdateUser(User user)

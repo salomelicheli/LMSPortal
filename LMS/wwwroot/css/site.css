@@ -94,8 +94,7 @@ body {
     -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
     box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19)
 }*/
-#navBar {
-    color: #feaf1b; /* Text color */
+#navBar { /* Text color */
     background-color: #feaf1b !important; /* New background color (yellow) */
     position: fixed !important;
     top: 0 !important;
@@ -105,10 +104,14 @@ body {
     margin: 0;
     padding: 0;
 }
+.profile-link {
+    color: black !important; 
+    text-decoration: none; 
+}
 
     #navBar a {
-        color: white !important; /* Ensures links in the navbar are white */
-        text-decoration: none; /* Optional: Removes underline from links */
+        color: white !important; 
+        text-decoration: none; 
     }
 .bg-custom-yellow {
     background-color: #b0b0b0 !important; /* A medium gray */

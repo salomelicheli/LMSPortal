@@ -28,12 +28,6 @@ namespace LMS
             });
             builder.Services.AddSession();
 
-            //builder.Services.AddAuthorization(options =>
-            //{
-            //    options.AddPolicy("AdminOnly", policy => policy.RequireRole(Role.Admin.ToString()));
-            //    options.AddPolicy("StudentOnly", policy => policy.RequireRole(Role.Student.ToString()));
-            //});
-
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -54,23 +48,6 @@ namespace LMS
             app.UseAuthorization();
 
             app.MapRazorPages();
-            //app.UseEndpoints(endpoints =>
-            //{
-            //    endpoints.MapRazorPages();
-            //    endpoints.MapFallback(context =>
-            //    {
-            //        var user = context.User;
-            //        if (user?.Identity?.IsAuthenticated == true)
-            //        {
-            //            context.Response.Redirect("/Index");
-            //        }
-            //        else
-            //        {
-            //            context.Response.Redirect("/Account/LoginPage");
-            //        }
-            //        return Task.CompletedTask;
-            //    });
-            //});
 
             app.Run();
         }

@@ -25,8 +25,6 @@
                                     @Model.ErrorMessage
                                 </div>
                             }
-
-                            <!-- User ID Input -->
                             <div class="form-group mb-3">
                                 <label asp-for="LoginVM.userID" class="form-label">მომხმარებელი</label>
                                 <div class="input-group">
@@ -37,8 +35,6 @@
                                 </div>
                                 <span asp-validation-for="LoginVM.userID" class="text-danger"></span>
                             </div>
-
-                            <!-- Password Input -->
                             <div class="form-group mb-3">
                                 <label asp-for="LoginVM.password" class="form-label">პაროლი</label>
                                 <div class="input-group">
@@ -49,8 +45,6 @@
                                 </div>
                                 <span asp-validation-for="LoginVM.password" class="text-danger"></span>
                             </div>
-
-                            <!-- Submit Button -->
                             <div class="d-grid">
                                 <button type="submit" class="btn btn-primary btn-block">შესვლა</button>
                             </div>

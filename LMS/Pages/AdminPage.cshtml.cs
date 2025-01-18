@@ -42,7 +42,8 @@ namespace LMS.Pages
             {
                 CourseName = adminVM.Name,
                 Description = adminVM.Description,
-                FacultyId = adminVM.SelectedFacultyId
+                FacultyId = adminVM.SelectedFacultyId,
+                Credit =  adminVM.Credit
             };
             await _courseService.Insert(course);
             return RedirectToPage();

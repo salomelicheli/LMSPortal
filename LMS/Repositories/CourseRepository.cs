@@ -38,8 +38,15 @@ namespace LMS.Repositories
 
         public async Task Update(Course course)
         {
-            _context.Courses.Update(course);
-            await _context.SaveChangesAsync();
+            var existingCourse = await _context.Courses.FirstOrDefaultAsync(x => x.Id == course.Id);
+            if(existingCourse != null)
+            {
+                existingCourse.CourseName = course.CourseName;
+                existingCourse.Description = course.Description;
+                existingCourse.Credit = course.Credit;
+
+                await _context.SaveChangesAsync();
+            }
         }
 
         public async Task<List<Faculty>?> getAllFaculties()

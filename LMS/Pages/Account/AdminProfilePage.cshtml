@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Profile Details";
 }
-{
+
 <div class="form-group">
     <label for="userName">Logged-in User:</label>
     <label>@User.Identity.Name</label>
@@ -49,51 +49,4 @@
     }
 }
 
-
-
-
-
-@*<div class="container my-5">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <h1 class="text-primary">Profile Details</h1>
-            <a class="btn btn-outline-primary" asp-area="" asp-page="/AdminPage">
-                <i class="fas fa-cogs"></i> Admin Dashboard
-            </a>
-        </div>
-        <div class="card shadow-lg">
-            <div class="card-header bg-primary text-white">
-                <h2 class="h5 mb-0">Student List</h2>
-            </div>
-            <div class="card-body">
-                @if (Model._adminProfile.Students.Count == 0)
-                {
-                    <p class="text-center text-muted">No students found.</p>
-                }
-                else
-                {
-                    <table class="table table-striped table-hover">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th>Id</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Email</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var student in Model._adminProfile.Students)
-                            {
-                                <tr>
-                                    <td>@student.PersonalID</td>
-                                    <td>@student.FirstName</td>
-                                    <td>@student.LastName</td>
-                                    <td>@student.Email</td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                }
-            </div>
-        </div>
-</div>*@
 
